@@ -1,0 +1,151 @@
+.container {
+  position: relative;
+  height: 150vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #80b7c0;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+/* For mobile phones */
+@media (max-width: 768px) {
+  .container {
+    height: 130vh;
+    padding: 1rem;
+  }
+
+  .filterImage, .espressoImage, .cupImage {
+    width: 80%; /* Scale down the images */
+    height: auto;
+  }
+
+  .espressoWrapper {
+    top: 45%; /* Adjust espresso position */
+    left: 50%;
+  }
+
+  .cupImage {
+    left: auto;
+    right: 0;
+    top: 0;
+    width: 50%;
+  }
+
+  .textBg p {
+    font-size: 2.5rem; /* Scale down background text */
+  }
+
+  .marquee p {
+    font-size: 3rem; /* Scale down scrolling text */
+  }
+}
+
+@media (max-width: 480px) {
+  .filterImage, .espressoImage, .cupImage {
+    width: 60%; /* Further reduce size on small screens */
+    height: auto;
+  }
+
+  .textBg p {
+    font-size: 2rem; /* Further scale down background text */
+  }
+
+  .marquee p {
+    font-size: 2rem; /* Further scale down scrolling text */
+  }
+}
+
+.filterWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 0;
+}
+
+.filterImage {
+  width: 200px;
+  height: auto;
+}
+
+.espressoWrapper {
+  position: absolute;
+  top: 50%; /* Center the image vertically */
+  left: 50%; /* Center the image horizontally */
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+}
+
+.espressoImage {
+  width: 600px; /* Adjust size as needed */
+  height: 700px;
+}
+
+.cupWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+}
+
+.cupImage {
+  position: absolute;
+  width: 156px;
+  height: auto;
+  z-index: 9;
+  left: 33vw;
+  top: -1.5rem;
+}
+
+.marquee {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+.marquee p {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 10rem;
+  animation: scrollText 60s linear infinite;
+  color: #cea3af;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.textBg {
+  padding-left: 2rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.textBg p {
+  font-size: 10rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.523);
+  line-height: 1.2;
+  text-align: left;
+  margin: 0;
+  z-index: -2;
+}

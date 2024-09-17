@@ -1,0 +1,42 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #cea3af;
+}
+
+.coffeeBean {
+  position: absolute;
+  width: 60px; /* Adjust size as needed */
+  height: 60px; /* Adjust size as needed */
+  object-fit: cover;
+  z-index: 10;
+}
+
+/* Text Background */
+.textBg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80vw; /* Adjust width to your preference */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 2rem;
+  z-index: 2; /* Make sure it's behind the coffee beans */
+}
+
+.textBg p {
+  font-size: 10rem; /* Adjust the size of the text */
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.523); /* Light, faded color for a subtle background effect */
+  line-height: 1.2;
+  text-align: right;
+  margin: 0;
+}
