@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import React, { useState } from "react";
 import {
   Container,
   Box,
@@ -8,7 +9,11 @@ import {
   TextField,
   Button,
   IconButton,
+  TextField,
+  Button,
+  IconButton,
 } from "@mui/material";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 
 const BlogPage = () => {
@@ -99,12 +104,25 @@ const BlogPage = () => {
             <MailOutlineIcon fontSize="large" />
           </IconButton>
         </Box>
+        {/* Header */}
+        <Box display="flex" justifyContent="center" alignItems="center" mb={4}>
+          <Typography variant="h4" component="div" mr={1}>
+            Blogs & Newsletters
+          </Typography>
+          <IconButton>
+            <MailOutlineIcon fontSize="large" />
+          </IconButton>
+        </Box>
 
         <Grid container spacing={4}>
           {/* Left: Newsletter list */}
           <Grid item xs={12} md={7}>
             {posts.map((post, index) => (
+          {/* Left: Newsletter list */}
+          <Grid item xs={12} md={7}>
+            {posts.map((post, index) => (
               <Box
+                key={index}
                 key={index}
                 sx={{
                   display: "flex",
@@ -114,6 +132,8 @@ const BlogPage = () => {
                   boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
                   padding: "16px",
                   position: "relative",
+                  border: "1px solid #e1e9ee",
+                  marginBottom: "16px",
                   border: "1px solid #e1e9ee",
                   marginBottom: "16px",
                 }}
@@ -133,22 +153,82 @@ const BlogPage = () => {
                   />
                 )}
                 <Box sx={{ flex: 1 }}>
-                  <Typography variant="h6">
-                    <Link href={post.link} underline="none" color="textPrimary">
-                      {post.title}
-                    </Link>
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" paragraph>
-                    {post.excerpt}
-                  </Typography>
-                  <Link href={post.link} underline="none" color="primary">
-                    Read More
-                  </Link>
+                <Typography variant="h6">
+  <Link href={post.link} underline="none" color="textPrimary" target="_blank" rel="noopener noreferrer">
+    {post.title}
+  </Link>
+</Typography>
+<Link href={post.link} underline="none" color="primary" target="_blank" rel="noopener noreferrer">
+  Read More
+</Link>
+
                 </Box>
               </Box>
             ))}
           </Grid>
+            ))}
+          </Grid>
 
+          {/* Right: Subscription form */}
+          <Grid item xs={12} md={5}>
+            <Box
+              component="form"
+              sx={{
+                backgroundColor: "#fff",
+                borderRadius: "8px",
+                boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+                padding: "16px",
+                border: "1px solid #e1e9ee",
+              }}
+              onSubmit={handleSubmit}
+            >
+              <Typography variant="h5" gutterBottom>
+                Subscribe to our Email List
+              </Typography>
+
+              <TextField
+                label="Name"
+                name="name"
+                fullWidth
+                margin="normal"
+                value={formData.name}
+                onChange={handleChange}
+                error={!!formErrors.name}
+                helperText={formErrors.name}
+              />
+
+              <TextField
+                label="Email"
+                name="email"
+                fullWidth
+                margin="normal"
+                value={formData.email}
+                onChange={handleChange}
+                error={!!formErrors.email}
+                helperText={formErrors.email}
+              />
+
+              <TextField
+                label="Social Media (Optional)"
+                name="social"
+                fullWidth
+                margin="normal"
+                value={formData.social}
+                onChange={handleChange}
+              />
+
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                fullWidth
+                sx={{ marginTop: "16px" }}
+              >
+                Subscribe
+              </Button>
+            </Box>
+          </Grid>
+        </Grid>
           {/* Right: Subscription form */}
           <Grid item xs={12} md={5}>
             <Box
