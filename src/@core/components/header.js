@@ -136,7 +136,7 @@ const Header = () => {
                       {servicesOptions.map((service, index) => (
                         <MenuItem
                           onClick={() =>
-                            handleMenuItemClick("/services/web-development")
+                            handleMenuItemClick(service.path)
                           }
                           sx={{
                             "&:hover": { color: "lightblue" }, // Change text color on hover

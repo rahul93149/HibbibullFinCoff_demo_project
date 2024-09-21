@@ -17,7 +17,7 @@ const MutualFundsPage = () => {
             Your Financial Brew, Perfectly Blended! ☕️
           </Typography>
           <Typography paragraph>
-            Ever wondered how making the perfect cup of coffee is a lot like
+            Ever wondered how making the perfect cup of coffee is a lot like  
             managing your money? Just like that ideal blend of coffee beans and
             milk, mutual funds are a carefully crafted mix of different
             financial ingredients—stocks, bonds, and securities—stirred together
@@ -158,7 +158,7 @@ const MutualFundsPage = () => {
 
           <Box sx={{ textAlign: "left" }}>
             <Typography variant="h6" gutterBottom>
-              Affordable for Everyone:
+              Affordable for Everyone:&nbsp;
               <Typography component="span" paragraph>
                 You don’t need a big budget to start. Much like you can enjoy a
                 simple filter coffee or a fancy cappuccino, mutual funds work
@@ -168,7 +168,7 @@ const MutualFundsPage = () => {
             </Typography>
 
             <Typography variant="h6" gutterBottom>
-              Lower Risk:
+              Lower Risk:&nbsp;
               <Typography component="span" paragraph>
                 Why put all your eggs (or beans) in one basket? Mutual funds
                 help spread the risk, meaning a well-balanced investment
@@ -177,7 +177,7 @@ const MutualFundsPage = () => {
             </Typography>
 
             <Typography variant="h6" gutterBottom>
-              Easy Liquidity:
+              Easy Liquidity:&nbsp;
               <Typography component="span" paragraph>
                 Need access to your cash in a hurry? No problem! You can redeem
                 your mutual fund units with ease, just like picking up your
@@ -186,7 +186,7 @@ const MutualFundsPage = () => {
             </Typography>
 
             <Typography variant="h6" gutterBottom>
-              Tax-Friendly:
+              Tax-Friendly:&nbsp;
               <Typography component="span" paragraph>
                 Some mutual funds even come with tax benefits, giving you an
                 extra shot of savings along the way.
@@ -204,7 +204,7 @@ const MutualFundsPage = () => {
             financial future you want?
           </Typography>
         </Box>
-        <Box sx={{ marginTop: "40px", textAlign: "center" }}>
+        <Box sx={{ marginTop: "40px", textAlign: "left" }}>
           <Typography variant="h5" sx={{ fontWeight: "bold" }}>
             Ready to start investing? Let’s talk over coffee! ☕️💸
           </Typography>

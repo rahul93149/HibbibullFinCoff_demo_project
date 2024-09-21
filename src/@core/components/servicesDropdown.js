@@ -9,24 +9,18 @@ const ServicesOptions = () => {
     {
       title: "Insurance",
 
-      path: "/insurance_service",
+      path: "/insurance",
     },
     {
       title: "Portfolio Management Service",
 
-      path: "/services",
-      openInNewTab: false,
-    },
-    {
-      title: "Asset Management",
-
-      path: "/Blogs",
+      path: "/portfolio_management",
       openInNewTab: false,
     },
     {
       title: "Financial Freedom",
 
-      path: "/contact",
+      path: "/financial_freedom",
       openInNewTab: false,
     },
   ];

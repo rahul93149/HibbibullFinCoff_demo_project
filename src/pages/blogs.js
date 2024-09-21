@@ -1,70 +1,111 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import {
   Container,
   Box,
   Typography,
   Link,
   Grid,
-  CircularProgress,
-  Alert,
+  TextField,
+  Button,
+  IconButton,
 } from "@mui/material";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
 
 const BlogPage = () => {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // Static data for posts
+  const posts = [
+    {
+      title: "How to Build a Strong Professional Network",
+      link: "#",
+      thumbnail: "https://via.placeholder.com/100", // Placeholder image
+      excerpt:
+        "Discover the best strategies to expand your network on LinkedIn and build valuable connections.",
+    },
+    {
+      title: "LinkedIn's Top 10 Tips for Career Success",
+      link: "#",
+      thumbnail: "https://via.placeholder.com/100",
+      excerpt:
+        "Explore LinkedIn's top 10 tips to help you achieve career growth and long-term success.",
+    },
+    {
+      title: "Using LinkedIn for Personal Branding",
+      link: "#",
+      thumbnail: "https://via.placeholder.com/100",
+      excerpt:
+        "Learn how to leverage LinkedIn for building and enhancing your personal brand.",
+    },
+    {
+      title: "How to Write a Great LinkedIn Article",
+      link: "#",
+      thumbnail: "https://via.placeholder.com/100",
+      excerpt:
+        "Step-by-step guide to writing engaging and high-impact articles on LinkedIn.",
+    },
+    {
+      title: "LinkedIn Marketing Strategies for 2024",
+      link: "#",
+      thumbnail: "https://via.placeholder.com/100",
+      excerpt:
+        "Find out the latest marketing trends and strategies on LinkedIn for 2024.",
+    },
+  ];
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        // Replace with your LinkedIn API URL and access token
-        const accessToken = "YOUR_ACCESS_TOKEN";
-        const response = await axios.get(
-          "https://www.linkedin.com/newsletters/brewing-standards-%F0%9F%92%B8-7218956408698855426",
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-              "X-Restli-Protocol-Version": "2.0.0",
-            },
-          }
-        );
-        setPosts(response.data.elements); // Adjust according to the response structure
-        setLoading(false);
-      } catch (err) {
-        setError(err);
-        setLoading(false);
-      }
-    };
+  // Form state
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    social: "",
+  });
 
-    fetchPosts();
-  }, []);
+  const [formErrors, setFormErrors] = useState({});
+
+  // Form validation and submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    let errors = {};
+    if (!formData.name) {
+      errors.name = "Name is required";
+    }
+    if (!formData.email) {
+      errors.email = "Email is required";
+    }
+
+    if (Object.keys(errors).length === 0) {
+      console.log("Form data:", formData);
+      alert("Form submitted successfully!");
+    } else {
+      setFormErrors(errors);
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
 
   return (
     <Box
       sx={{ backgroundColor: "#f4f4f4", minHeight: "100vh", padding: "40px 0" }}
     >
       <Container maxWidth="lg">
-        <Typography variant="h2" align="center" gutterBottom>
-          Our Blog
-        </Typography>
-        <Typography variant="h5" align="center" paragraph>
-          Latest updates, articles, and newsletters from LinkedIn.
-        </Typography>
-
-        {loading && (
-          <CircularProgress sx={{ display: "block", margin: "0 auto" }} />
-        )}
-        {error && (
-          <Alert severity="error">
-            Failed to load posts. Please try again later.
-          </Alert>
-        )}
+        {/* Header */}
+        <Box display="flex" justifyContent="center" alignItems="center" mb={4}>
+          <Typography variant="h4" component="div" mr={1}>
+            Blogs & Newsletters
+          </Typography>
+          <IconButton>
+            <MailOutlineIcon fontSize="large" />
+          </IconButton>
+        </Box>
 
         <Grid container spacing={4}>
-          {posts.map((post, index) => (
-            <Grid item xs={12} md={6} key={index}>
+          {/* Left: Newsletter list */}
+          <Grid item xs={12} md={7}>
+            {posts.map((post, index) => (
               <Box
+                key={index}
                 sx={{
                   display: "flex",
                   alignItems: "flex-start",
@@ -73,19 +114,24 @@ const BlogPage = () => {
                   boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
                   padding: "16px",
                   position: "relative",
+                  border: "1px solid #e1e9ee",
+                  marginBottom: "16px",
                 }}
               >
-                <Box
-                  component="img"
-                  src={post.thumbnail} // Ensure this is the correct path
-                  alt={post.title}
-                  sx={{
-                    width: "100px",
-                    height: "auto",
-                    borderRadius: "8px",
-                    marginRight: "16px",
-                  }}
-                />
+                {post.thumbnail && (
+                  <Box
+                    component="img"
+                    src={post.thumbnail}
+                    alt={post.title}
+                    sx={{
+                      width: "100px",
+                      height: "auto",
+                      borderRadius: "8px",
+                      marginRight: "16px",
+                      border: "1px solid #e1e9ee",
+                    }}
+                  />
+                )}
                 <Box sx={{ flex: 1 }}>
                   <Typography variant="h6">
                     <Link href={post.link} underline="none" color="textPrimary">
@@ -100,40 +146,69 @@ const BlogPage = () => {
                   </Link>
                 </Box>
               </Box>
-            </Grid>
-          ))}
-        </Grid>
+            ))}
+          </Grid>
 
-        <Box
-          sx={{
-            backgroundColor: "#2E5103",
-            color: "#ffffff",
-            padding: "40px 0",
-            marginTop: "40px",
-            textAlign: "center",
-          }}
-        >
-          <Typography variant="h4" gutterBottom>
-            Subscribe to Our Newsletter
-          </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "column",
-            }}
-          >
-            <TextField
-              variant="outlined"
-              placeholder="Your email address"
-              sx={{ marginBottom: "16px", width: "300px" }}
-            />
-            <Button variant="contained" color="primary">
-              Subscribe
-            </Button>
-          </Box>
-        </Box>
+          {/* Right: Subscription form */}
+          <Grid item xs={12} md={5}>
+            <Box
+              component="form"
+              sx={{
+                backgroundColor: "#fff",
+                borderRadius: "8px",
+                boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+                padding: "16px",
+                border: "1px solid #e1e9ee",
+              }}
+              onSubmit={handleSubmit}
+            >
+              <Typography variant="h5" gutterBottom>
+                Subscribe to our Email List
+              </Typography>
+
+              <TextField
+                label="Name"
+                name="name"
+                fullWidth
+                margin="normal"
+                value={formData.name}
+                onChange={handleChange}
+                error={!!formErrors.name}
+                helperText={formErrors.name}
+              />
+
+              <TextField
+                label="Email"
+                name="email"
+                fullWidth
+                margin="normal"
+                value={formData.email}
+                onChange={handleChange}
+                error={!!formErrors.email}
+                helperText={formErrors.email}
+              />
+
+              <TextField
+                label="Social Media (Optional)"
+                name="social"
+                fullWidth
+                margin="normal"
+                value={formData.social}
+                onChange={handleChange}
+              />
+
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                fullWidth
+                sx={{ marginTop: "16px" }}
+              >
+                Subscribe
+              </Button>
+            </Box>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );

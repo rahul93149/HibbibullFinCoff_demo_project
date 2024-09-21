@@ -198,11 +198,10 @@ const Footer = () => {
             component="p"
             sx={{ marginBottom: "20px", lineHeight: 1.6 }} // Increased margin and line-height
           >
-            DISCLAIMER : www.finx.in is an online website of FinX Wealth Private
-            Limited who is registered vide ARN-269905 as a AMFI Registered
+            DISCLAIMER : Saahil Mutreja of Hippiebull fincoff is registered vide ARN-190295 as a AMFI Registered
             Mutual Fund Distributor. The said website is intended to provide
             educative and informative details related to investments and also
-            provide online transaction facility in Mutual Funds. We do not
+            provide information on online transaction facility in Mutual Funds. We do not
             charge any fees for these calculators and information, because we
             earn our commissions from the Mutual Fund companies. The website
             does not guarantee any returns or financial goal success by any
@@ -222,11 +221,10 @@ const Footer = () => {
             component="p"
             sx={{ lineHeight: 1.6 }} // Increased line-height
           >
-            Copyright © 2023 FinX Wealth Private Limited. All rights reserved.
-          </Typography>
-        </Container>
-      </Box>
-    </Box>
+            Copyright © 2024 Hippiebull Fincoff pvt. lmt. All rights reserved/</Typography>
+            </Container>
+            </Box>
+            </Box>
   );
 };
 
