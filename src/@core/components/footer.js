@@ -172,10 +172,10 @@ const Footer = () => {
                 <Email sx={{ verticalAlign: "middle", marginRight: "8px" }} />
                 Mail to:{" "}
                 <Link
-                  href="mailto:hippiebull@fincoff@gmail.com"
+                  href="mailto:hippiebullfincoff@gmail.com"
                   color="inherit"
                 >
-                  hippiebull@fincoff@gmail.com
+                  hippiebullfincoff@gmail.com
                 </Link>
               </Typography>
             </Box>
