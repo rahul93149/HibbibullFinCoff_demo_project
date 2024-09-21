@@ -304,7 +304,7 @@ const About = () => {
             >
               <Box sx={{ marginBottom: "15px" }}>
                 <img
-                  src="/images/saahil_ceo.jfif"
+                  src="/images/ashok.jpeg"
                   alt="Saahil Mutreja"
                   style={{
                     borderRadius: "50%",
@@ -325,8 +325,7 @@ const About = () => {
               </Typography>
               <Typography variant="body2" sx={{ marginTop: "10px" }}>
               He is the backbone of Hippiebull and as well as this financial corporation which we lovingly now call Hippiebull Fincoff.
-              He is the true OG who has been a steady pillar since day one. With over four decades of experience in the financial industry, he brings a wealth of knowledge and leadership, ensuring the company's solid foundation and growth. His expertise and unwavering commitment are what keep everything running smoothly.
-              </Typography>
+              He is the true OG who has been a steady pillar since day one. </Typography>
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
@@ -340,8 +339,8 @@ const About = () => {
             >
               <Box sx={{ marginBottom: "15px" }}>
                 <img
-                  src="/images/nitin_coo.jpg"
-                  alt="Nitin Garg"
+                  src="/images/rooh.jpeg"
+                  alt="Rooh"
                   style={{
                     borderRadius: "50%",
                     width: "150px",
