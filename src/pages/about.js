@@ -6,7 +6,6 @@ const About = () => {
     <Box
       sx={{ backgroundColor: "#f2e0d2", color: "#4b2e1e", padding: "50px 0" }}
     >
-      <img src='/images/saahil_ceo.jfif'/>
       <Container maxWidth="lg">
         {/* Page Heading */}
         <Typography
@@ -247,7 +246,7 @@ const About = () => {
                 Nidhi Kakkar
               </Typography>
               <Typography variant="body2" sx={{ color: "#5e3d29" }}>
-                Director
+                COO
               </Typography>
               <Typography variant="body2" sx={{ marginTop: "10px" }}>
                 Founder Pawwbuddy | Marketing & Sales (R&D) | SIBM Pune | Ex -
@@ -319,15 +318,14 @@ const About = () => {
                 variant="h6"
                 sx={{ fontWeight: "bold", color: "#8b5e34" }}
               >
-                Saahil Mutreja
+                Ashok Kumar Mutreja 
               </Typography>
               <Typography variant="body2" sx={{ color: "#5e3d29" }}>
-                CEO & Founder
+                Director
               </Typography>
               <Typography variant="body2" sx={{ marginTop: "10px" }}>
-                Founder & CEO @ Hippiebull Fincoff | Asset Under Management
-                (AUM) $3.7 Million and growing! 💸 | Simplifying overwhelming
-                financial decisions over a cup of coffee. ☕
+              He is the backbone of Hippiebull and as well as this financial corporation which we lovingly now call Hippiebull Fincoff.
+              He is the true OG who has been a steady pillar since day one. With over four decades of experience in the financial industry, he brings a wealth of knowledge and leadership, ensuring the company's solid foundation and growth. His expertise and unwavering commitment are what keep everything running smoothly.
               </Typography>
             </Paper>
           </Grid>
@@ -356,16 +354,13 @@ const About = () => {
                 variant="h6"
                 sx={{ fontWeight: "bold", color: "#8b5e34" }}
               >
-                Nitin Garg
+                Rooh
               </Typography>
               <Typography variant="body2" sx={{ color: "#5e3d29" }}>
-                COO
+                Cuddling Manager
               </Typography>
               <Typography variant="body2" sx={{ marginTop: "10px" }}>
-                Director of Operations | Transforming strategic visions into
-                reality | Passionate about streamlining processes and enhancing
-                operational efficiency | Advocate for continuous improvement and
-                team collaboration.
+              Meet Rooh, our resident Cuddling Manager at Hippiebull Fincoff! With a soft purr and a heart full of love, Rooh makes sure everyone at the office feels cozy and calm. Whether it’s a quick cuddle during a stressful day or a gentle reminder to take a break, Rooh’s got it covered.
               </Typography>
             </Paper>
           </Grid>
