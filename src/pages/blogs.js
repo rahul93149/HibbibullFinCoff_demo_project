@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import React, { useState } from "react";
 import {
   Container,
   Box,
@@ -9,12 +8,10 @@ import {
   TextField,
   Button,
   IconButton,
-  TextField,
-  Button,
-  IconButton,
+ 
 } from "@mui/material";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+
 
 const BlogPage = () => {
   // Static data for posts
@@ -22,7 +19,7 @@ const BlogPage = () => {
     {
       title: "How to Build a Strong Professional Network",
       link: "#",
-      thumbnail: "https://via.placeholder.com/100", // Placeholder image
+      thumbnail: "https://media.licdn.com/dms/image/v2/D5612AQHA8nCYemt7qQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1725102671362?e=1732752000&v=beta&t=PlEdgtFuF_Orp6_9W5oHdQHjLDEV0OeVvFrnEGudpk0", // Placeholder image
       excerpt:
         "Discover the best strategies to expand your network on LinkedIn and build valuable connections.",
     },
@@ -104,25 +101,14 @@ const BlogPage = () => {
             <MailOutlineIcon fontSize="large" />
           </IconButton>
         </Box>
-        {/* Header */}
-        <Box display="flex" justifyContent="center" alignItems="center" mb={4}>
-          <Typography variant="h4" component="div" mr={1}>
-            Blogs & Newsletters
-          </Typography>
-          <IconButton>
-            <MailOutlineIcon fontSize="large" />
-          </IconButton>
-        </Box>
+       
 
         <Grid container spacing={4}>
           {/* Left: Newsletter list */}
-          <Grid item xs={12} md={7}>
-            {posts.map((post, index) => (
-          {/* Left: Newsletter list */}
+         
           <Grid item xs={12} md={7}>
             {posts.map((post, index) => (
               <Box
-                key={index}
                 key={index}
                 sx={{
                   display: "flex",
@@ -165,8 +151,7 @@ const BlogPage = () => {
                 </Box>
               </Box>
             ))}
-          </Grid>
-            ))}
+          
           </Grid>
 
           {/* Right: Subscription form */}
@@ -228,66 +213,7 @@ const BlogPage = () => {
               </Button>
             </Box>
           </Grid>
-        </Grid>
-          {/* Right: Subscription form */}
-          <Grid item xs={12} md={5}>
-            <Box
-              component="form"
-              sx={{
-                backgroundColor: "#fff",
-                borderRadius: "8px",
-                boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-                padding: "16px",
-                border: "1px solid #e1e9ee",
-              }}
-              onSubmit={handleSubmit}
-            >
-              <Typography variant="h5" gutterBottom>
-                Subscribe to our Email List
-              </Typography>
-
-              <TextField
-                label="Name"
-                name="name"
-                fullWidth
-                margin="normal"
-                value={formData.name}
-                onChange={handleChange}
-                error={!!formErrors.name}
-                helperText={formErrors.name}
-              />
-
-              <TextField
-                label="Email"
-                name="email"
-                fullWidth
-                margin="normal"
-                value={formData.email}
-                onChange={handleChange}
-                error={!!formErrors.email}
-                helperText={formErrors.email}
-              />
-
-              <TextField
-                label="Social Media (Optional)"
-                name="social"
-                fullWidth
-                margin="normal"
-                value={formData.social}
-                onChange={handleChange}
-              />
-
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                fullWidth
-                sx={{ marginTop: "16px" }}
-              >
-                Subscribe
-              </Button>
-            </Box>
-          </Grid>
+      
         </Grid>
       </Container>
     </Box>
