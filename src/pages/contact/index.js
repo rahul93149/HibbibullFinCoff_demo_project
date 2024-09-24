@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Typography,
   Box,
@@ -12,7 +12,7 @@ import Image from "next/image";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
-export default function Contact() {
+const ContactPage=()=> {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -65,7 +65,7 @@ export default function Contact() {
     Object.values(formData).some((field) => field === "");
 
   return (
-    <Box sx={{ minHeight: "100vh", backgroundColor: "#f5f5f5", color: "#333" }}>
+    <Box sx={{ minHeight: "100vh", backgroundColor: "#f2e0d2", color: "#4b2e1e" }}>
       <Grid container sx={{ minHeight: "100%" }}>
         {/* Left Image */}
         <Grid item xs={12} md={3}>
@@ -89,6 +89,8 @@ export default function Contact() {
               justifyContent: "center",
               alignItems: "center",
               height: "100%",
+              backgroundColor: "#f5f5f5",
+              color: "#333",
               padding: { xs: "20px", md: "40px" },
             }}
           >
@@ -96,9 +98,7 @@ export default function Contact() {
             <Typography variant="h4" sx={{ textAlign: "center", marginTop: 2 }}>
               Get in Touch with Us
             </Typography>
-            <Typography
-              sx={{ textAlign: "center", marginTop: 1, marginBottom: 4 }}
-            >
+            <Typography sx={{ textAlign: "center", marginTop: 1, marginBottom: 4 }}>
               We are here to answer any questions you may have. Fill out the
               form below to reach us.
             </Typography>
@@ -258,3 +258,4 @@ export default function Contact() {
     </Box>
   );
 }
+export default ContactPage;

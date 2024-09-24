@@ -1,9 +1,20 @@
 import React, { useState } from "react";
-import { AppBar, Toolbar, Box, Button, Menu, MenuItem } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Box,
+  Button,
+  Menu,
+  MenuItem,
+  IconButton,
+} from "@mui/material";
 import { useRouter } from "next/router";
 import Options from "./options";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ServicesOptions from "./servicesDropdown";
+import Image from "next/image";
+import MenuIcon from "@mui/icons-material/Menu"; // Mobile menu icon
+import { useMediaQuery } from "@mui/material"; // To handle media queries
 
 const Header = () => {
   const router = useRouter();
@@ -12,14 +23,16 @@ const Header = () => {
 
   // State for controlling the dropdown menu for "Services"
   const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // State for mobile menu
   const isServicesMenuOpen = Boolean(anchorEl);
+  const isMobile = useMediaQuery("(max-width:900px)"); // Media query for responsiveness
 
-  // Function to handle opening the dropdown
+  // Handle opening the dropdown
   const handleMouseEnter = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  // Function to handle closing the dropdown
+  // Handle closing the dropdown
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -33,78 +46,54 @@ const Header = () => {
 
   const isSelected = (path) => router.pathname === path;
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   return (
     <AppBar
-      position="absolute"
+      position="fixed"
       elevation={0}
-      sx={{ background: "transparent", color: "inherit" }}
+      sx={{ background: "white", color: "black", padding: "10px 20px" }}
     >
-      <Toolbar>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          {/* <img
-            src="/images/logo.jpg"
-            alt="Icon"
-            style={{ width: "100px", height: "auto", cursor: "pointer" }}
-            onClick={() => router.push("/")} // Clicking the logo redirects to homepage
-          /> */}
+      <Toolbar sx={{ justifyContent: "space-between" }}>
+        {/* Logo */}
+        <Box
+          sx={{ display: "flex", alignItems: "center", cursor: "pointer" }}
+          // onClick={() => router.push("/")}
+        >
+          <Image src="/images/logo.jpg" alt="Icon" height={60} width={60} />
         </Box>
 
-        {/* Empty Box to push content to the center */}
-        <Box sx={{ flexGrow: 1 }} />
-
-        {/* Spread options with equal spacing */}
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            flexGrow: 1,
-            maxWidth: "600px",
-            width: "100%",
-          }}
-        >
-          {options.map((option, index) => (
-            <React.Fragment key={index}>
-              {option.title === "Services" ? (
-                // "Services" with hover effect and dropdown
-                <>
+        {/* Desktop Menu */}
+        {!isMobile ? (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexGrow: 1,
+              maxWidth: "800px",
+            }}
+          >
+            {options.map((option, index) => (
+              <React.Fragment key={index}>
+                {option.title === "Services" ? (
                   <Box
-                    onClick={() => {
-                      option.path && router.push(option.path);
-                    }}
-                    sx={{
-                      position: "relative",
-                      display: "inline-block",
-                    }}
+                  onClick={() => router.push(option.path)}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleClose}
+                    sx={{ position: "relative", cursor: "pointer" }}
                   >
                     <Box
+                     
                       sx={{
-                        borderBottom: isSelected(option.path)
-                          ? "2px solid white"
-                          : "none",
-                        color: option.path
-                          ? isSelected(option.path)
-                            ? "green"
-                            : "inherit"
-                          : "inherit",
-                        backgroundColor: option.path
-                          ? isSelected(option.path)
-                            ? "lightblue"
-                            : "inherit"
-                          : "inherit",
                         padding: "8px 16px",
-                        border: isServicesMenuOpen
-                          ? "1px solid lightblue"
-                          : "1px solid transparent",
-                        // backgroundColor: isServicesMenuOpen
-                        //   ? "lightblue"
-                        //   : "inherit",
-                        cursor: "pointer",
-                        "&:hover": {
-                          backgroundColor: "lightgray",
-                          border: "1px solid lightgray",
-                        },
+                        borderBottom: isSelected(option.path)
+                          ? "2px solid green"
+                          : "none",
+                        color: isSelected(option.path) ? "green" : "inherit",
+                        "&:hover": { backgroundColor: "lightgray" },
                       }}
                     >
                       Services
@@ -114,74 +103,148 @@ const Header = () => {
                       anchorEl={anchorEl}
                       open={isServicesMenuOpen}
                       onClose={handleClose}
-                      MenuListProps={{ onMouseLeave: handleClose }}
-                      anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "left",
-                      }}
+                      anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
                       PaperProps={{
                         sx: {
-                          backgroundColor: "black", // Black background for dropdown
-                          color: "white", // White text
-                          opacity: 0,
-                          transform: "translateY(-20px)",
-                          transition: "transform 0.5s ease, opacity 0.5s ease", // Smooth transition
-                          ...(isServicesMenuOpen && {
-                            opacity: 1,
-                            transform: "translateY(0)",
-                          }), // Animate the dropdown when open
+                          backgroundColor: "black",
+                          color: "white",
+                          boxShadow: "0px 3px 6px rgba(0,0,0,0.1)",
+                          transition: "transform 0.5s ease, opacity 0.5s ease",
                         },
                       }}
                     >
                       {servicesOptions.map((service, index) => (
                         <MenuItem
-                          onClick={() =>
-                            handleMenuItemClick(service.path)
-                          }
-                          sx={{
-                            "&:hover": { color: "lightblue" }, // Change text color on hover
-                          }}
+                          key={index}
+                          onClick={() => handleMenuItemClick(service.path)}
+                          sx={{ "&:hover": { color: "lightblue" } }}
                         >
-                          <ChevronRightIcon sx={{ marginRight: 1 }} />{" "}
-                          {/* Icon before text */}
+                          <ChevronRightIcon sx={{ marginRight: 1 }} />
                           {service.title}
                         </MenuItem>
                       ))}
                     </Menu>
                   </Box>
-                </>
-              ) : (
-                // Other menu items
-                <Button
-                  color="inherit"
-                  onClick={() => {
-                    option.path && router.push(option.path);
-                  }}
-                  sx={{
-                    borderBottom: isSelected(option.path)
-                      ? "2px solid white"
-                      : "none",
-                    color: option.path
-                      ? isSelected(option.path)
-                        ? "green"
-                        : "inherit"
-                      : "inherit",
-                    backgroundColor: option.path
-                      ? isSelected(option.path)
-                        ? "lightblue"
-                        : "inherit"
-                      : "inherit",
-                  }}
-                >
-                  {option.title}
-                </Button>
-              )}
-            </React.Fragment>
-          ))}
-        </Box>
+                ) : (
+                  <Button
+                    key={index}
+                    color="inherit"
+                    onClick={() => {
+                      option.path && router.push(option.path);
+                    }}
+                    sx={{
+                      padding: "8px 16px",
+                      borderBottom: isSelected(option.path)
+                        ? "2px solid green"
+                        : "none",
+                      color: isSelected(option.path) ? "green" : "inherit",
+                      "&:hover": { backgroundColor: "lightgray" },
+                    }}
+                  >
+                    {option.title}
+                  </Button>
+                )}
+              </React.Fragment>
+            ))}
+          </Box>
+        ) : (
+          // Mobile Menu
+          <>
+            <IconButton color="inherit" edge="end" onClick={toggleMobileMenu}>
+              <MenuIcon />
+            </IconButton>
+            {mobileMenuOpen && (
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: 60,
+                  right: 0,
+                  backgroundColor: "white",
+                  boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+                  width: "100%",
+                  padding: "10px",
+                }}
+              >
+                {options.map((option, index) =>
+                  option.title === "Services" ? (
+                    <Box
+                    key={index}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleClose}
+                    sx={{
+                      position: "relative",
+                      display: "flex",           // Changed from 'inline-block' to 'flex' to align items
+                      justifyContent: "center",  // Center the content horizontally
+                      alignItems: "center",      // Align the content vertically
+                      cursor: "pointer",
+                    }}
+                  >
+                    <Box
+                      onClick={() => router.push(option.path)}
+                      sx={{
+                        padding: "8px 16px",
+                        borderBottom: isSelected(option.path) ? "2px solid green" : "none",
+                        color: isSelected(option.path) ? "green" : "inherit",
+                        "&:hover": { backgroundColor: "lightgray" },
+                        textAlign: "center",      // Ensures the text is centered within the box
+                        width: "100%",            // Takes the full width to be centered
+                      }}
+                    >
+                      Services
+                    </Box>
+                  
 
-        {/* Empty Box to maintain center alignment */}
-        <Box sx={{ flexGrow: 1 }} />
+                      <Menu
+                        anchorEl={anchorEl}
+                        open={isServicesMenuOpen}
+                        onClose={handleClose}
+                        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+                        PaperProps={{
+                          sx: {
+                            backgroundColor: "black",
+                            color: "white",
+                            boxShadow: "0px 3px 6px rgba(0,0,0,0.1)",
+                            transition: "transform 0.5s ease, opacity 0.5s ease",
+                          },
+                        }}
+                      >
+                        {servicesOptions.map((service, index) => (
+                          <MenuItem
+                            key={index}
+                            onClick={() => handleMenuItemClick(service.path)}
+                            sx={{ "&:hover": { color: "lightblue" } }}
+                          >
+                            <ChevronRightIcon sx={{ marginRight: 1 }} />
+                            {service.title}
+                          </MenuItem>
+                        ))}
+                      </Menu>
+                    </Box>
+                  ) : (
+                    <Button
+                      key={index}
+                      fullWidth
+                      onClick={() => {
+                        option.path && router.push(option.path);
+                        setMobileMenuOpen(false);
+                      }}
+                      sx={{
+                        padding: "10px",
+                        textAlign: "left",
+                        borderBottom: isSelected(option.path)
+                          ? "2px solid green"
+                          : "none",
+                        color: isSelected(option.path) ? "green" : "inherit",
+                      }}
+                    >
+                      {option.title}
+                    </Button>
+                  )
+                )}
+              </Box>
+            )}
+          </>
+        )}
       </Toolbar>
     </AppBar>
   );

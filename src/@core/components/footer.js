@@ -14,6 +14,7 @@ import ServicesOptions from "./servicesDropdown";
 const Footer = () => {
   const servicesOptions = ServicesOptions();
   const router = useRouter();
+
   return (
     <Box>
       {/* Wide Box Above Footer */}
@@ -33,10 +34,16 @@ const Footer = () => {
               alignItems: "flex-start",
               padding: "0 20px", // Padding for sides
               flexWrap: "wrap",
+              gap: "20px", // Gap between items for smaller screens
+              "@media (max-width: 900px)": {
+                flexDirection: "column", // Stack items vertically on small screens
+                textAlign: "center", // Center text for mobile views
+                alignItems: "center",
+              },
             }}
           >
             {/* First Line: Icon and Social Media Links */}
-            <Box sx={{ textAlign: "left", flex: 1 }}>
+            <Box sx={{ textAlign: "center", flex: 1 }}>
               <img
                 src="/images/logo.jpg"
                 alt="Icon"
@@ -47,7 +54,7 @@ const Footer = () => {
                   display: "flex",
                   gap: "16px",
                   marginTop: "16px",
-                  //   marginRight: "160px",
+                  justifyContent: "center", // Center social media icons
                 }}
               >
                 <IconButton
@@ -78,7 +85,15 @@ const Footer = () => {
             </Box>
 
             {/* Second Line: Know Us with options */}
-            <Box sx={{ textAlign: "left", flex: 1 }}>
+            <Box
+              sx={{
+                textAlign: "left",
+                flex: 1,
+                "@media (max-width: 900px)": {
+                  textAlign: "center", // Center align Know Us section on small screens
+                },
+              }}
+            >
               <Typography
                 variant="h6"
                 sx={{ fontWeight: "bold", marginBottom: "16px" }}
@@ -92,36 +107,39 @@ const Footer = () => {
                   { title: "About", path: "/about" },
                   { title: "Blogs", path: "/blogs" },
                   { title: "Contact Us", path: "/contact" },
-                  { title: "Privacy Policy", path: "/" },
+                  { title: "Privacy Policy" },
                 ].map((item, index) => (
                   <Box
-                    key={index}
-                    sx={{ display: "flex", alignItems: "center" }}
-                  >
-                    <Box
-                      sx={{
-                        width: "8px",
-                        height: "8px",
-                        borderRadius: "50%",
-                        backgroundColor: "white",
-                        marginRight: "12px",
-                      }}
-                    />
-                    <Link
-                      href="#"
-                      underline="none"
-                      sx={{ color: "white" }}
-                      onClick={() => router.push(item.path)}
-                    >
-                      {item.title}
-                    </Link>
-                  </Box>
+                  key={index}
+                  sx={{ display: "flex", alignItems: "center",mr:"60px" }}
+                >
+                  <Box
+                    sx={{
+                      width: "8px",
+                      height: "8px",
+                      borderRadius: "50%",
+                      backgroundColor: "white",
+                      marginRight: "12px",
+                    }}
+                  />
+                  <Link href="#" underline="none" sx={{ color: "white" }}>
+                    {item.title}
+                  </Link>
+                </Box>
                 ))}
               </Box>
             </Box>
 
             {/* Third Line: Services with options */}
-            <Box sx={{ textAlign: "left", flex: 1 }}>
+            <Box
+              sx={{
+                textAlign: "left",
+                flex: 1,
+                "@media (max-width: 900px)": {
+                  textAlign: "center", // Center align Services section on small screens
+                },
+              }}
+            >
               <Typography
                 variant="h6"
                 sx={{ fontWeight: "bold", marginBottom: "16px" }}
@@ -145,7 +163,7 @@ const Footer = () => {
                         marginRight: "12px",
                       }}
                     />
-                    <Link href="#" underline="none" sx={{ color: "white" }}>
+                    <Link href={item.path} underline="none" sx={{ color: "white" }}>
                       {item.title}
                     </Link>
                   </Box>
@@ -154,7 +172,15 @@ const Footer = () => {
             </Box>
 
             {/* Fourth Line: Reach Us */}
-            <Box sx={{ textAlign: "left", flex: 1 }}>
+            <Box
+              sx={{
+                textAlign: "left",
+                flex: 1,
+                "@media (max-width: 900px)": {
+                  textAlign: "center", // Center align Reach Us section on small screens
+                },
+              }}
+            >
               <Typography
                 variant="h6"
                 sx={{ fontWeight: "bold", marginBottom: "16px" }}
@@ -198,10 +224,10 @@ const Footer = () => {
             component="p"
             sx={{ marginBottom: "20px", lineHeight: 1.6 }} // Increased margin and line-height
           >
-            DISCLAIMER : Saahil Mutreja of Hippiebull fincoff is registered vide ARN-190295 as a AMFI Registered
+            DISCLAIMER : Saahil Mutreja of Hippiebull Fincoff is registered vide ARN-190295 as an AMFI Registered
             Mutual Fund Distributor. The said website is intended to provide
             educative and informative details related to investments and also
-            provide information on online transaction facility in Mutual Funds. We do not
+            provide information on the online transaction facility in Mutual Funds. We do not
             charge any fees for these calculators and information, because we
             earn our commissions from the Mutual Fund companies. The website
             does not guarantee any returns or financial goal success by any
@@ -213,7 +239,7 @@ const Footer = () => {
             sx={{ marginBottom: "20px", lineHeight: 1.6 }} // Increased margin and line-height
           >
             Mutual Fund investments are subject to market risks. Please read all
-            scheme related documents carefully before investing. Past
+            scheme-related documents carefully before investing. Past
             performance is not an indicator of future returns.
           </Typography>
           <Typography
@@ -221,10 +247,11 @@ const Footer = () => {
             component="p"
             sx={{ lineHeight: 1.6 }} // Increased line-height
           >
-            Copyright © 2024 Hippiebull Fincoff pvt. lmt. All rights reserved/</Typography>
-            </Container>
-            </Box>
-            </Box>
+            Copyright © 2024 Hippiebull Fincoff pvt. lmt. All rights reserved
+          </Typography>
+        </Container>
+      </Box>
+    </Box>
   );
 };
 

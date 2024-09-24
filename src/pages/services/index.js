@@ -29,7 +29,7 @@ const Service = () => {
         <Grid container spacing={4}>
           {/* Services list */}
           {options.map((service, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
+            <Grid item xs={12} sm={6} md={6} key={index}>
               <Box
                 sx={{
                   backgroundColor: "#ffffff",
