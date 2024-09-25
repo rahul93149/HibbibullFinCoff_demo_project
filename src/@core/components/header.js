@@ -51,17 +51,9 @@ const Header = () => {
   };
 
   return (
-    <AppBar
-      position="fixed"
-      elevation={0}
-      sx={{ background: "white", color: "black", padding: "10px 20px" }}
-    >
+    <AppBar position="fixed" elevation={0} sx={{ background: "white", color: "black", padding: "10px 20px" }}>
       <Toolbar sx={{ justifyContent: "space-between" }}>
-        {/* Logo */}
-        <Box
-          sx={{ display: "flex", alignItems: "center", cursor: "pointer" }}
-          // onClick={() => router.push("/")}
-        >
+        <Box sx={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
           <Image src="/images/logo.jpg" alt="Icon" height={60} width={60} />
         </Box>
 
@@ -246,7 +238,7 @@ const Header = () => {
           </>
         )}
       </Toolbar>
-    </AppBar>
+      </AppBar>
   );
 };
 
